@@ -4,84 +4,70 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>Violet Royale | عمارت زیبایی ویولت</title>
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;400;700&display=swap" rel="stylesheet">
     
     <script async src="https://ga.jspm.io/npm:es-module-shims@1.10.1/dist/es-module-shims.js"></script>
-
-    <style>
-        :root {
-            --royal-violet: #1a0633;
-            --gold-leaf: #c5a059;
-            --silk-white: #fffdfa;
-        }
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background-color: var(--silk-white);
-            color: var(--royal-violet);
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            /* حذف حاشیه آبی هنگام لمس المان‌ها در اندروید */
-            -webkit-tap-highlight-color: transparent;
-        }
-        .gold-gradient {
-            background: linear-gradient(135deg, #c5a059 0%, #f9f1c0 50%, #c5a059 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .royal-border {
-            border: 1px solid rgba(197, 160, 89, 0.2);
-        }
-        .glass-header {
-            background: rgba(255, 253, 250, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
-        }
-        @keyframes slow-zoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-        .animate-zoom { animation: slow-zoom 20s linear infinite alternate; }
-        
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-
     <script type="importmap">
     {
         "imports": {
-            "react/": "https://esm.sh/react@^19.2.3/",
-            "react": "https://esm.sh/react@^19.2.3",
-            "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-            "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
-            "recharts": "https://esm.sh/recharts@^3.6.0",
-            "lucide-react": "https://esm.sh/lucide-react@^0.463.0"
+            "react": "https://esm.sh/react@18.2.0",
+            "react-dom": "https://esm.sh/react-dom@18.2.0/client",
+            "lucide-react": "https://esm.sh/lucide-react@0.263.1"
         }
     }
     </script>
+    <style>
+        :root { --royal-violet: #1a0633; --gold-leaf: #c5a059; --silk-white: #fffdfa; }
+        body { font-family: 'Vazirmatn', sans-serif; background: var(--silk-white); color: var(--royal-violet); margin: 0; }
+        .gold-text { background: linear-gradient(135deg, #c5a059 0%, #f9f1c0 50%, #c5a059 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
 </head>
 <body>
     <div id="root"></div>
 
-    <script>
-        window.addEventListener('scroll', () => {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(r => {
-                const windowHeight = window.innerHeight;
-                const revealTop = r.getBoundingClientRect().top;
-                if (revealTop < windowHeight - 100) r.classList.add('active');
-            });
-        });
-    </script>
+    <script type="module">
+        import React from 'react';
+        import { createRoot } from 'react-dom';
+        import { Heart, Star, Scissors, Phone } from 'lucide-react';
 
-    <script type="module" src="index.tsx"></script>
+        const App = () => {
+            return React.createElement('div', { className: 'min-h-screen' },
+                // Header
+                React.createElement('nav', { className: 'p-6 bg-white shadow-sm flex justify-between items-center sticky top-0 z-50' },
+                    React.createElement('h1', { className: 'text-2xl font-bold gold-text' }, 'ویولت رویال'),
+                    React.createElement('a', { href: 'tel:09120000000', className: 'bg-[#1a0633] text-white px-4 py-2 rounded-full flex items-center gap-2' },
+                        React.createElement(Phone, { size: 18 }),
+                        React.createElement('span', null, 'رزرو نوبت')
+                    )
+                ),
+                // Hero Section
+                React.createElement('header', { className: 'py-20 px-6 text-center bg-[#1a0633] text-white' },
+                    React.createElement('h2', { className: 'text-4xl font-bold mb-4 gold-text' }, 'تجربه زیبایی در قصر ویولت'),
+                    React.createElement('p', { className: 'text-gray-300' }, 'ارائه دهنده لوکس‌ترین خدمات آرایشی و بهداشتی با کادر متخصص')
+                ),
+                // Services
+                React.createElement('section', { className: 'py-16 px-6' },
+                    React.createElement('h3', { className: 'text-2xl font-bold text-center mb-10' }, 'خدمات برتر ما'),
+                    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-3 gap-6' },
+                        [
+                            { title: 'میکاپ عروس', icon: Heart, desc: 'درخشش در خاص‌ترین شب زندگی شما' },
+                            { title: 'رنگ و لایت', icon: Star, desc: 'استفاده از برترین برندهای جهانی' },
+                            { title: 'کوتاهی ژورنالی', icon: Scissors, desc: 'جدیدترین متدهای اصلاح مو' }
+                        ].map((s, i) => 
+                            React.createElement('div', { key: i, className: 'p-6 rounded-2xl border border-gray-100 bg-white text-center hover:shadow-xl transition' },
+                                React.createElement(s.icon, { className: 'mx-auto mb-4 text-[#c5a059]', size: 40 }),
+                                React.createElement('h4', { className: 'font-bold mb-2' }, s.title),
+                                React.createElement('p', { className: 'text-sm text-gray-500' }, s.desc)
+                            )
+                        )
+                    )
+                )
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(React.createElement(App));
+    </script>
 </body>
 </html>
