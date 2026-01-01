@@ -4,70 +4,113 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>Violet Royale | عمارت زیبایی ویولت</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;400;700&display=swap" rel="stylesheet">
     
-    <script async src="https://ga.jspm.io/npm:es-module-shims@1.10.1/dist/es-module-shims.js"></script>
-    <script type="importmap">
-    {
-        "imports": {
-            "react": "https://esm.sh/react@18.2.0",
-            "react-dom": "https://esm.sh/react-dom@18.2.0/client",
-            "lucide-react": "https://esm.sh/lucide-react@0.263.1"
-        }
-    }
-    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
-        :root { --royal-violet: #1a0633; --gold-leaf: #c5a059; --silk-white: #fffdfa; }
-        body { font-family: 'Vazirmatn', sans-serif; background: var(--silk-white); color: var(--royal-violet); margin: 0; }
-        .gold-text { background: linear-gradient(135deg, #c5a059 0%, #f9f1c0 50%, #c5a059 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        :root {
+            --royal-violet: #1a0633;
+            --gold-leaf: #c5a059;
+            --silk-white: #fffdfa;
+        }
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--silk-white);
+            color: var(--royal-violet);
+            margin: 0;
+            padding: 0;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #c5a059 0%, #f9f1c0 50%, #c5a059 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .royal-card {
+            background: white;
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            transition: all 0.3s ease;
+        }
+        .royal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(26, 6, 51, 0.05);
+            border-color: var(--gold-leaf);
+        }
+        .animate-fade-up {
+            animation: fadeUp 1s ease-out forwards;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
-    <div id="root"></div>
 
-    <script type="module">
-        import React from 'react';
-        import { createRoot } from 'react-dom';
-        import { Heart, Star, Scissors, Phone } from 'lucide-react';
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gold-leaf/10 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-[#1a0633] rounded-full flex items-center justify-center text-[#c5a059] font-bold">V</div>
+            <span class="text-xl font-black gold-gradient">ویولت رویال</span>
+        </div>
+        <a href="tel:09120000000" class="bg-[#1a0633] text-white p-2 rounded-full hover:bg-opacity-90 transition">
+            <i data-lucide="phone" class="w-5 h-5"></i>
+        </a>
+    </nav>
 
-        const App = () => {
-            return React.createElement('div', { className: 'min-h-screen' },
-                // Header
-                React.createElement('nav', { className: 'p-6 bg-white shadow-sm flex justify-between items-center sticky top-0 z-50' },
-                    React.createElement('h1', { className: 'text-2xl font-bold gold-text' }, 'ویولت رویال'),
-                    React.createElement('a', { href: 'tel:09120000000', className: 'bg-[#1a0633] text-white px-4 py-2 rounded-full flex items-center gap-2' },
-                        React.createElement(Phone, { size: 18 }),
-                        React.createElement('span', null, 'رزرو نوبت')
-                    )
-                ),
-                // Hero Section
-                React.createElement('header', { className: 'py-20 px-6 text-center bg-[#1a0633] text-white' },
-                    React.createElement('h2', { className: 'text-4xl font-bold mb-4 gold-text' }, 'تجربه زیبایی در قصر ویولت'),
-                    React.createElement('p', { className: 'text-gray-300' }, 'ارائه دهنده لوکس‌ترین خدمات آرایشی و بهداشتی با کادر متخصص')
-                ),
-                // Services
-                React.createElement('section', { className: 'py-16 px-6' },
-                    React.createElement('h3', { className: 'text-2xl font-bold text-center mb-10' }, 'خدمات برتر ما'),
-                    React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-3 gap-6' },
-                        [
-                            { title: 'میکاپ عروس', icon: Heart, desc: 'درخشش در خاص‌ترین شب زندگی شما' },
-                            { title: 'رنگ و لایت', icon: Star, desc: 'استفاده از برترین برندهای جهانی' },
-                            { title: 'کوتاهی ژورنالی', icon: Scissors, desc: 'جدیدترین متدهای اصلاح مو' }
-                        ].map((s, i) => 
-                            React.createElement('div', { key: i, className: 'p-6 rounded-2xl border border-gray-100 bg-white text-center hover:shadow-xl transition' },
-                                React.createElement(s.icon, { className: 'mx-auto mb-4 text-[#c5a059]', size: 40 }),
-                                React.createElement('h4', { className: 'font-bold mb-2' }, s.title),
-                                React.createElement('p', { className: 'text-sm text-gray-500' }, s.desc)
-                            )
-                        )
-                    )
-                )
-            );
-        };
+    <header class="relative h-[60vh] flex items-center justify-center overflow-hidden bg-[#1a0633] text-white px-6 text-center">
+        <div class="relative z-10 animate-fade-up">
+            <span class="text-[#c5a059] tracking-widest text-sm mb-4 block">LUXURY BEAUTY MANSION</span>
+            <h1 class="text-4xl md:text-6xl font-black mb-6 gold-gradient">تجربه زیبایی در قصر ویولت</h1>
+            <p class="text-gray-300 max-w-lg mx-auto leading-relaxed">ارائه دهنده لوکس‌ترین خدمات آرایشی و بهداشتی با بهره‌گیری از کادری متخصص و برندهای جهانی.</p>
+            <button class="mt-8 bg-[#c5a059] text-[#1a0633] px-10 py-3 rounded-full font-bold hover:bg-yellow-500 transition shadow-lg">رزرو آنلاین نوبت</button>
+        </div>
+    </header>
 
-        const root = createRoot(document.getElementById('root'));
-        root.render(React.createElement(App));
+    <section class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold mb-2">خدمات تخصصی ما</h2>
+            <div class="w-20 h-1 bg-[#c5a059] mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="royal-card p-8 rounded-3xl text-center">
+                <div class="w-16 h-16 bg-purple-50 text-[#c5a059] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i data-lucide="sparkles" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-[#1a0633]">میکاپ تخصصی</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">گریم و میکاپ حرفه‌ای عروس با متدهای اروپایی و کلاسیک.</p>
+            </div>
+
+            <div class="royal-card p-8 rounded-3xl text-center">
+                <div class="w-16 h-16 bg-purple-50 text-[#c5a059] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i data-lucide="scissors" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-[#1a0633]">رنگ و لایت</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">تکنیک‌های نوین بالیاژ، آمبره و هایلایت بدون آسیب به مو.</p>
+            </div>
+
+            <div class="royal-card p-8 rounded-3xl text-center">
+                <div class="w-16 h-16 bg-purple-50 text-[#c5a059] rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i data-lucide="flower-2" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-[#1a0633]">فیشیال پوست</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">پاکسازی تخصصی و جوان‌سازی پوست با مواد ارگانیک.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#1a0633] text-white py-12 px-6 text-center border-t border-gold-leaf/20">
+        <div class="mb-6 flex justify-center gap-4">
+            <i data-lucide="instagram" class="w-6 h-6 text-[#c5a059]"></i>
+            <i data-lucide="message-circle" class="w-6 h-6 text-[#c5a059]"></i>
+        </div>
+        <p class="text-sm text-gray-400">تهران، خیابان فرشته، پلاک ۱۰۰ - عمارت ویولت</p>
+        <p class="mt-4 text-xs text-gray-500">تمامی حقوق برای ویولت رویال محفوظ است.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
     </script>
 </body>
 </html>
