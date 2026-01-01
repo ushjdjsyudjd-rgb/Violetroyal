@@ -1,0 +1,8 @@
+{
+  "name": "کلینیک زیبایی ویولت (Violet Clinic)",
+  "description": "پلتفرم اختصاصی نوبت‌دهی و مشاوره هوشمند پوست، مو و زیبایی ویولت.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
